@@ -1,0 +1,31 @@
+.contact-container {
+	margin: 50px;
+	background-color: #0d0d0d;
+	border-radius: 40px;
+}
+
+.contact-container.inview {
+}
+
+.title-contact {
+	font-size: 8rem;
+	font-weight: 800;
+	color: #f1f1f1;
+	margin: 0;
+	margin-top: -20px;
+}
+
+.desc-contact {
+	font-size: 1.5rem;
+	font-weight: 500;
+	color: #d3d3d3;
+	margin: 0;
+}
+
+.contact-content {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	height: 80vh;
+}

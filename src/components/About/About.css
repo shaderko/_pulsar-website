@@ -1,0 +1,41 @@
+.about-container {
+	display: flex;
+	flex-direction: column;
+	gap: 120px;
+	align-items: center;
+}
+
+.about-header {
+	font-size: 2.25rem;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 10px;
+}
+
+.about-content {
+	display: flex;
+	flex-direction: row;
+	gap: 20px;
+}
+
+.about-colorful-title {
+	background: linear-gradient(
+		90deg,
+		#f4a956 0%,
+		#edbd55 30%,
+		#9936c7 20%,
+		#7862e2 100%
+	);
+	background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+
+.about-card-container {
+	gap: 25px;
+	border-radius: 25px;
+	background-color: #222;
+	padding: 30px;
+	max-width: 360px;
+}

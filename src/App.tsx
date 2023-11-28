@@ -1,13 +1,13 @@
 import './App.css';
-import Navbar from './components/Navbar/Navbar';
+import LandingPage from './pages/LandingPage/LandingPage';
 
 function App() {
-  return (
-    <>
-      <Navbar />
-      <div style={{ height: '150vh' }}></div>
-    </>
-  );
+	return (
+		<>
+			<LandingPage />
+			<div style={{ height: '150vh' }}></div>
+		</>
+	);
 }
 
 export default App;
