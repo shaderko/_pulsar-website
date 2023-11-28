@@ -1,4 +1,4 @@
-import { ReactEventHandler, useEffect } from 'react';
+import { useEffect } from 'react';
 import './Contact.css';
 
 const Contact = () => {

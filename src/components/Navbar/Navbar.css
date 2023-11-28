@@ -81,6 +81,7 @@
 }
 
 .navbar-item a {
+	text-decoration: none;
 	color: inherit;
 	white-space: nowrap;
 	transition: all 800ms cubic-bezier(0.18, 1.63, 0.31, 0.96);
