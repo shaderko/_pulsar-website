@@ -1,10 +1,36 @@
 .contact-container {
-	margin: 50px;
+	position: relative;
 	background-color: #0d0d0d;
-	border-radius: 40px;
+	transition: all 2s cubic-bezier(0.03, 0.89, 0.57, 0.98);
+	margin-top: 50px;
+	overflow: hidden;
 }
 
 .contact-container.inview {
+	background-color: transparent;
+	margin-left: 50px;
+	margin-right: 50px;
+	border-radius: 40px;
+}
+
+.contact-container::after {
+	content: '';
+	z-index: -1;
+	transition: all 1s ease-in-out;
+	position: absolute;
+	opacity: 0;
+	background: 
+    repeating-radial-gradient(#9b9b9b 0 0.0001%,#9c9c9c 0 0.0002%) 50% 0/2500px 2500px,
+    repeating-conic-gradient(#8a8a8a 0 0.0001%,#8f8f8f 0 0.0002%) 60% 60%/2500px 2500px;
+	background-blend-mode: difference;
+	top: 0%;
+	left: 0%;
+	right: 0%;
+	bottom: 0%;
+}
+
+.contact-container.inview::after {
+	opacity: 1;
 }
 
 .title-contact {
@@ -28,4 +54,72 @@
 	justify-content: center;
 	align-items: center;
 	height: 80vh;
+}
+
+.blackout {
+	transition: all 800ms ease-in-out;
+	background-color: black;
+}
+
+.contact-btn::before {
+	transform: translate3d(0, 0, 45px);
+	content: '';
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	border: solid 2px #222;
+	border-radius: 12px;
+}
+
+.contact-btn::after {
+	transform: translate3d(0, 0, 15px);
+	content: '';
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	border: solid 2px #222;
+	border-radius: 12px;
+}
+
+.contact-btn {
+	margin-top: 60px;
+	cursor: pointer;
+	perspective: 210px;
+    perspective-origin: 50% 50%;
+	position: relative;
+	outline: none;
+	border: none;
+	background-color: transparent;
+	padding: 20px 40px;
+	perspective-origin: 50% 50%;
+}
+
+.contact-btn.notactive {
+	transition: all 3s cubic-bezier(0.03, 0.89, 0.57, 0.98);
+}
+
+.contact-btn.notactive::before, .contact-btn.notactive::after, .contact-btn.notactive .contact-btn-title {
+	transition: all 3s cubic-bezier(0.03, 0.89, 0.57, 0.98);
+	transform: translate3d(0, 0, 0px);
+}
+
+.contact-btn-title {
+	transform: translate3d(0, 0, 30px);
+	font-size: 1.2rem;
+	font-weight: 500;
+	color: #f1f1f1;
+	margin: 0;
+}
+
+.contact-btn-hover-container {
+	z-index: 5;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	position: absolute;
+	padding: 200px;
 }

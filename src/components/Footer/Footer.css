@@ -1,0 +1,103 @@
+body {
+    --footer-clickable-ig-top: 0px;
+    --footer-clickable-ig-left: 0px;
+    --footer-clickable-x-top: 0px;
+    --footer-clickable-x-left: 0px;
+    --footer-clickable-fb-top: 0px;
+    --footer-clickable-fb-left: 0px;
+}
+
+.footer-a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.footer-img {
+    user-select: none;
+    height: 23px;
+    width: 96px;
+    padding-left: 3px;
+    filter: saturate(0) contrast(0) brightness(2);
+}
+
+.footer-copyright {
+    color: #868686;
+}
+
+.footer {
+    overflow: hidden;
+}
+
+.footer-content {
+    justify-content: space-between;
+    align-items: center;
+    padding: 40px 50px;
+    flex-direction: row;
+    display: flex;
+    margin: auto;
+    transform: translateY(100%);
+	transition: all 2s cubic-bezier(0.03, 0.89, 0.57, 0.98);
+}
+
+.footer-content.inview {
+    transform: translateY(0);
+}
+
+.footer-navbar {
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 50px;
+    margin: 0;
+}
+
+.footer-nav-item {
+    overflow: hidden;
+    border-radius: 15px;
+    position: relative;
+}
+
+.footer-nav-item a {
+    display: flex;
+    cursor: pointer;
+    padding: 20px;
+    overflow: hidden;
+    user-select: none;
+    text-decoration: none;
+}
+
+.footer-nav-item a::before {
+    z-index: -1;
+    content: '';
+    pointer-events: none;
+    position: absolute;
+    /* transition: all 200ms cubic-bezier(0.03, 0.89, 0.57, 0.98); */
+    width: 200px;
+    height: 200px;
+    transform: translate(-50%, -50%);
+    background: radial-gradient( #222 0%, #22222200 100%);
+    filter: blur(30px);
+    border-radius: 50%;
+    opacity: 0;
+    transition: all 3s cubic-bezier(0.03, 0.89, 0.57, 0.98);
+}
+
+.footer-nav-item a.active::before {
+    opacity: 1;
+}
+
+#ig::before {
+    top: var(--footer-clickable-ig-top);
+    left: var(--footer-clickable-ig-left);
+}
+
+#x::before {
+    top: var(--footer-clickable-x-top);
+    left: var(--footer-clickable-x-left);
+}
+
+#fb::before {
+    top: var(--footer-clickable-fb-top);
+    left: var(--footer-clickable-fb-left);
+}
