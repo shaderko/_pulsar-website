@@ -12,11 +12,9 @@ const Footer = () => {
   const scrollHandler = () => {
     if (!isInViewport(-100)) {
       ref.current!.classList.remove('inview');
-      console.log('footer hide');
       return;
     }
 
-    console.log('footer show');
     ref.current!.classList.add('inview');
   };
 

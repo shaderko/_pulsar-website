@@ -14,11 +14,8 @@ const Contact = () => {
     if (!isInViewport(700)) {
       ref.current!.classList.remove('inview');
       document.body.classList.remove('blackout');
-      console.log('remove');
       return;
     }
-
-    console.log('in view');
 
     ref.current!.classList.add('inview');
     document.body.classList.add('blackout');

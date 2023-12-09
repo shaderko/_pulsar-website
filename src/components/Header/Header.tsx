@@ -1,27 +1,45 @@
-import { useState } from 'react';
+import { useEffect, useRef } from 'react';
 import './Header.css';
 
 const Header = () => {
-  const [image, setImage] = useState<string>('./video/scene00030.jpg');
+  const imgRef = useRef<any>();
 
-  const range = [30, 90];
+  const handleScroll = (e: any) => {
+    const scrollTop = window.scrollY;
+    const img = imgRef.current!;
 
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    let x = e.pageX / window.innerWidth;
-    const i = Math.floor(x * (range[1] - range[0]) + range[0]);
-    setImage(`./video/scene000${i}.jpg`);
+    console.log('da', scrollTop);
+
+    img.style.transform = `translate(-50%, calc(-50% + ${scrollTop / 2}px))`;
   };
 
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
   return (
-    <div onMouseMove={handleMouseMove} className="main-container">
+    <div className="main-container">
       <div className="header">
-        <h1 className="header-title">Pulsar Digital</h1>
+        <span className="title-animation-container">
+          <h1 className="header-title">Pulsar Digital</h1>
+        </span>
         <span className="header-text-container">
           <h2 className="header-description">We help you with</h2>
           <h2 className="header-description-title">Websites</h2>
         </span>
       </div>
-      <img className="main-img" src={image} draggable={false} />
+      <div className="image-container">
+        <img
+          ref={imgRef}
+          className="main-img"
+          src="./pulsar_background.png"
+          draggable={false}
+        />
+      </div>
       <div className="header-btn-container">
         <button className="header-btn">
           <img src="./arrow.svg" />

@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, MouseEvent } from 'react';
 import './Navbar.css';
 
 const Navbar = () => {
@@ -23,10 +23,6 @@ const Navbar = () => {
       setHovered(false);
     });
 
-    setTimeout(() => {
-      mainNavbarRef.current!.classList.remove('loading');
-    }, 100);
-
     // create the hover box
 
     return () => {
@@ -34,42 +30,60 @@ const Navbar = () => {
     };
   }, []);
 
-  useEffect(() => {
-    if (!hovered && scrolled >= 40) {
-      setOpen(false);
-      return;
-    }
-    setOpen(true);
-  }, [hovered, scrolled]);
+  const openHandler = (e: any) => {
+    const target = e.target as HTMLElement;
+    console.log(target);
+    target.classList.add('active');
+  };
 
-  useEffect(() => {
-    if (open) {
-      mainNavbarRef.current?.classList.remove('closed');
-    } else {
-      mainNavbarRef.current?.classList.add('closed');
-    }
-  }, [open]);
+  const closeHandler = (e: any) => {
+    const target = e.target as HTMLElement;
+    console.log(target);
+    target.classList.remove('active');
+  };
 
   return (
     <>
       <div ref={hoverRef} className="navbar-hover">
-        <div ref={mainNavbarRef} className="navbar closed loading">
+        <div ref={mainNavbarRef} className="navbar">
           <ul className="navbar-menu">
             <li className="navbar-item active">
               <a href="/#">
                 <img src="./pulsar_logo.png"></img>
               </a>
             </li>
-            <li className="navbar-item">
-              <a href="#about">About us</a>
-            </li>
-            <li className="navbar-item">
-              <a href="#projects">Projects</a>
-            </li>
-            <li className="navbar-item">
-              <a href="#contact">Contact us</a>
-            </li>
+            <ul className="navbar-right-menu">
+              <li className="navbar-item">
+                <a href="#about">About us</a>
+              </li>
+              <li
+                className="navbar-item"
+                onMouseEnter={(e: MouseEvent<HTMLElement>) => {
+                  (e.target as HTMLElement).classList.add('active');
+                  document.getElementById('projects')?.classList.add('show');
+                }}
+                onMouseLeave={closeHandler}
+              >
+                <a href="#projects">Projects</a>
+              </li>
+              <li className="navbar-item">
+                <a href="#contact">Contact us</a>
+              </li>
+            </ul>
           </ul>
+          <div id="projects">
+            <div>
+              <span>
+                <div>
+                  <img />
+                </div>
+                <div>
+                  <h4></h4>
+                  <p></p>
+                </div>
+              </span>
+            </div>
+          </div>
         </div>
       </div>
     </>
