@@ -71,7 +71,7 @@ const Navbar = () => {
               </li>
             </ul>
           </ul>
-          <div id="projects">
+          {/* <div id="projects">
             <div>
               <span>
                 <div>
@@ -83,7 +83,7 @@ const Navbar = () => {
                 </div>
               </span>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     </>
